@@ -21,7 +21,10 @@ function executar() {
   const as4D = tensor4.as4D(1, 2, 2, 1);
 
   const tensor5 = tf.tensor([1, 2, 3, 4, 5, 6, 7, 8]);
-  const as5D = tensor5.as5D(1, 2, 2, 2, 1)
+  const as5D = tensor5.as5D(1, 2, 2, 2, 1);
+
+  const tensor6 = tf.tensor([1.5, 2.2, 3.1, 4.5, 5.9, 6.3, 7.1, 8.9]);
+  const asType = tensor6.asType('int32'); // arredondamento sempra para baixo
 
   txt += 'asScalar:\n';
   txt += 'antes: ' + tensor1d.toString() + '\n';
@@ -50,6 +53,10 @@ function executar() {
   txt += 'as5D:\n';
   txt += 'antes: ' + tensor5.toString() + '\n';
   txt += 'depois: ' + as5D.toString() + '\n\n';
+
+  txt += 'asType:\n';
+  txt += 'antes: ' + tensor6.toString() + '\n';
+  txt += 'depois: ' + asType.toString() + '\n\n';
   exibir(txt);
 }
 
