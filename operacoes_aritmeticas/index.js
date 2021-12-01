@@ -91,6 +91,37 @@ function executar() {
   txt += 'antes: ' + tensor17.toString() + '\n';
   txt += 'depois: ' + minimum.toString() + '\n\n';
 
+  // MOD
+  const tensor18 = tf.tensor([8, 9, 7, 5]);
+  const tensor19 = tf.tensor([2, 3, 2, 2]);
+  const mod = tensor18.mod(tensor19) // o resto da divisão de cada indice;
+
+  txt += 'mod:\n';
+  txt += 'antes: ' + tensor18.toString() + '\n';
+  txt += 'antes: ' + tensor19.toString() + '\n';
+  txt += 'depois: ' + mod.toString() + '\n\n';
+
+  // Pow
+  const tensor20 = tf.tensor([2, 3]);
+  const tensor21 = tf.tensor([3, 2]);
+  const pow = tensor20.pow(tensor21) // potenciação de cada indice;
+
+  txt += 'pow:\n';
+  txt += 'antes: ' + tensor20.toString() + '\n';
+  txt += 'antes: ' + tensor21.toString() + '\n';
+  txt += 'depois: ' + pow.toString() + '\n\n';
+
+
+  // squaredDifference
+  const tensor22 = tf.tensor([2, 7]);
+  const tensor23 = tf.tensor([1, 2]);
+  const squaredDifference = tensor22.squaredDifference(tensor23) // raiz quadrada de cada indice;
+
+  txt += 'squaredDifference:\n';
+  txt += 'antes: ' + tensor22.toString() + '\n';
+  txt += 'antes: ' + tensor23.toString() + '\n';
+  txt += 'depois: ' + squaredDifference.toString() + '\n\n';
+
   exibir(txt);
 }
 
