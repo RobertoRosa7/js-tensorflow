@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inteligência Artificial com JavaScript</title>
+  <link rel="stylesheet" href="../bootstrap/bootstrap.min.css">
+  <script src="../bootstrap/jsquery-3-6.min.js"></script>
+  <script src="../bootstrap/bootstrap-popper.min.js"></script>
+  <script src="../bootstrap/bootstrap.min.js"></script>
+  <script src="../tensorflow/tfjs1.0.4.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-warning navbar-primary">
+    <ul class="navbar-nav">
+      <li class="navbar-item">
+        <a href="#" class="nav-link text-white">
+          TensorFlow
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <br>
+  <div class="container">
+    <h2>Inteligência Artificial com JavaScript e TensorFlow</h2>
+    <p>TensorFlow</p>
+    <input class="form-control" onchange="openFile(event)" type="file" name="file" id="file" />
+    <br />
+    <input id="metros" class="form-control" type="number" id="m2" placeholder="tamanho em m²" />
+    <br />
+    <input id="idade" class="form-control" type="number" id="age" placeholder="idade em anos" />
+    <br />
+    <button onclick="executar2()" class="btn btn-lg btn-warning">Executar</button>
+    <br />
+    <br />
+    <input class="form-control" type="text" id="price" placeholder="precificação em R$" />
+    <br />
+    <br />
+    <p id="result" style="text-align: right;"></p>
+  </div>
+  <script src="index.js"></script>
+</body>
+
+</html>
