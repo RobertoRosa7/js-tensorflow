@@ -7,11 +7,12 @@ let entradaY = 0;
 
 function abrir({ target }) {
   loadingFile(target.files).then((data) => {
+    eixoX = [];
+    eixoY = [];
+    classe = [];
     let carac = ',';
-    if (data.indexOf(';') >= 0) {
-      carac = ';'
-    }
-    let lines = data.split('\r\n');
+    if (data.indexOf(';') >= 0) carac = ';';
+    let lines = data.split(/\r?\n/);
     for (let i = 1; i < lines.length; i++) {
       let cell = lines[i].split(carac);
       eixoX.push(Number(cell[0]));
@@ -59,7 +60,7 @@ function salvar() {
     txt += `${eixoX[i]};${eixoY[i]};${classe[i]}\r\n`;
   }
   txt += '#'; // delimitar o final
-  txt = txt.replace(/\r\n#/g, '');
+  txt = txt.replace(/\r?\n#/g, '');
   let filename = `modelo-${new Date().getTime()}`;
   let blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
   saveAs(blob, filename + '.csv');
@@ -86,6 +87,21 @@ function toStringClass(numberClass = 0) {
   if (numberClass > (classesNomes.length - 1)) {
     numberClass = Number(classesNomes.length - 1);
   }
+  let name = '';
+  for (let i = 0; i < classesNomes.length; i++) {
+    if (i === numberClass) {
+      name = classesNomes[i].trim();
+    }
+  }
+  return name;
+}
+
+function toArrayNumberClass(arrClass) {
+  let result = [];
+  for (let i = 0; i < arrClass.length; i++) {
+    result.push(toNumberClass(arrClass[i]));
+  }
+  return result;
 }
 
 function knn() {
@@ -101,8 +117,43 @@ function knn() {
   return entradaClasse;
 }
 
+function classificadorRNA() {
+  $('#entradaC').val('...carregando.');
+  let entradas = [];
+
+  for (let i = 0; i < eixoX.length; i++) {
+    entradas.push([eixoX[i], eixoY[i]]);
+  }
+
+  let outputs = toArrayNumberClass(classe);
+  let execucao = [[entradaX, entradaY]];
+
+  let model = tf.sequential();
+  let inputLayer = tf.layers.dense({ units: 1, inputShape: [2] });
+  model.add(inputLayer);
+  model.compile({ loss: 'meanSquaredError', optimizer: tf.train.sgd(.00001) });
+
+  let x = tf.tensor(entradas, [entradas.length, 2]);
+  let y = tf.tensor(outputs, [outputs.length, 1]);
+  let input = tf.tensor(execucao, [execucao.length, 2]);
+
+  model.fit(x, y, { epochs: 400 }).then(() => {
+    let output = model.predict(input).abs().round().dataSync();
+    if (isNaN(output)) {
+      model.fit(x, y, { epochs: 400 }).then(() => {
+        output = model.predit(input).abs().round().dataSync();
+        output = toStringClass(output);
+        $('#entradaC').val(output);
+      });
+    } else {
+      output = toStringClass(output);
+      $('#entradaC').val(output);
+    }
+  });
+}
+
 function retornaClasse() {
   entradaX = parseFloat($('#entradaX').val());
   entradaY = parseFloat($('#entradaY').val());
-  $('#entradaC').val(knn());
+  $('#entradaC').val(classificadorRNA());
 }

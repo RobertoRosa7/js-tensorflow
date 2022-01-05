@@ -7,10 +7,8 @@ let entradaY = 0;
 function abrir({ target }) {
   loadingFile(target.files).then((data) => {
     let carac = ',';
-    if (data.indexOf(';') >= 0) {
-      carac = ';'
-    }
-    let lines = data.split('\r\n');
+    if (data.indexOf(';') >= 0) carac = ';';
+    let lines = data.split(/\r?\n/)
     for (let i = 1; i < lines.length; i++) {
       let cell = lines[i].split(carac);
       eixoX.push(Number(cell[0]));
