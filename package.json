@@ -1,0 +1,23 @@
+{
+  "name": "js-tensorflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertoRosa7/js-tensorflow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertoRosa7/js-tensorflow/issues"
+  },
+  "homepage": "https://github.com/RobertoRosa7/js-tensorflow#readme",
+  "dependencies": {
+    "@tensorflow/tfjs": "^3.12.0"
+  }
+}
