@@ -6,7 +6,7 @@ async function neuralNetwork() {
   model.compile({ loss: tf.losses.meanSquaredError, optimizer: 'sgd' });
 
   const x = tf.tensor([[0, 0], [0, 1], [1, 0], [1, 1]] );
-  const y = tf.tensor([[0], [0], [0], [1]]); // operador AND
+  const y = tf.tensor([[0], [1], [1], [1]]); // operador OR
   const z = tf.tensor([[0, 0], [0, 1], [1, 0], [1, 1]]) // z como entrada;
 
   // epochs que pode ser considerado como back propagation
