@@ -1,0 +1,55 @@
+﻿<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>TensorFlow</title>
+  <script src="../tensorflow/tfjs1.0.4.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="../file_saver/file_saver.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-warning">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">
+          TensorFlow
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <br>
+  <div class="container">
+    <img src="img/tf.png" width="5%" style="float: right;">
+    <h2>Inteligência Artificial com JavaScript e TensorFlow.js</h2>
+    <p>TensorFlow</p>
+
+    <input type="file" class="form-control" onchange="abrir(event)"><br>
+
+    <input type="number" id="entradaX" class="form-control" placeholder="X" /><br>
+    <input type="number" id="entradaY" class="form-control" placeholder="Y" /><br>
+
+    <button class="btn btn-lg btn-warning" onclick="executar()">Executar</button><br><br>
+
+    <input type="text" id="entradaZ" class="form-control" placeholder="Z" /><br>
+    <div align="right" id="erro"></div>
+
+  </div>
+
+  <script src="action01.js"></script>
+</body>
+
+</html>
